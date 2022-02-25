@@ -32,6 +32,8 @@ struct Base                    // ! -------------------- 001 Base          是�
         static_cast<Child*>(this) -> implementation();
     }
 };
+// ! 模板定义: base 中有个形参 Child, 对形参做了一些操作
+// ! 模板调用: base<Child>
 
 struct Derived : Base<Derived> // ! -------------------- 002 Base<Derived> 是一个 template class, 模板特化
 {                              // !                          派生类在继承自基类的时候, 需要将自己的类型信息给它.
