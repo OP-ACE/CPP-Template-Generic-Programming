@@ -15,4 +15,5 @@ int main()
     PrintNumbers(1, 2);
     PrintNumbers(3, 4.5);
     PrintNumbers(5.6, 7.8);
+    PrintNumbers<int,double>(12.34,9);
 }
