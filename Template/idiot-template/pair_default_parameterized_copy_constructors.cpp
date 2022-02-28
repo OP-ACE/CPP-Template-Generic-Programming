@@ -21,7 +21,10 @@ struct Pair
     //!            References cannot be modified. 
     //!            Adding const qualification to non-modifiable entity would be meaningless and confusing.
     
-    Pair()
+    Pair(const Pair<T1, T2>& OtherPair) : first(OtherPair.first), second(OtherPair.second)
+    {};
+    //! 注意上面初始化列表的格式:标点符号
+    //! 形参OtherPair的类型为 Pair<T1,T2>
     //! 拷贝构造函数
 
     
