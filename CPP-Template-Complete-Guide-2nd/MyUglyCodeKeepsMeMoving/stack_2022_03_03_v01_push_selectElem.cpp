@@ -13,8 +13,8 @@ template<class T>
 class Stack                           //* ----- 001 这里区别于函数 没有 argument, 就光秃秃一个类名
 {     
     //private:                        //! ----- 002 犯错 这里设置成员数据为私有, 后面  std::cout << v2[0] 出错
-    std::vector<T> v;                 //! ----- 003 犯错 丢了 std::, 写成 vector<T> v
-     
+    std::vector<T> v;                 //! ----- 003 犯错 丢了 std::, 写成 vector<T> v; 犯错 
+    // std::vector<T> this->v;        //! ----- 004 犯错 类内定义数据成员时, 写上this是错误的, 但是类内成员函数调用时是必须的
     public:     
     void push(T a);                   //! ----- 004 犯错 void push(T a){}; 函数声明不需函数体,仅要函数名
      
