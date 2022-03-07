@@ -51,10 +51,10 @@ T Stack<T>::top()
 }
 
 template<class T>
-void Stack<T>::printOn(std::ostream & os)  //! -------- 002 [重点] 如何重载输出运算符 <<
+void Stack<T>::printOn(std::ostream & os)  //! -------- 002 [重点] 这里只是定义打印函数, 并没有重载输出运算符 <<
 {                               
     for(T const & vi : v)
-    {os << vi << " ";}
+    {os << vi << " ";}                      //* std::ostream 就像是显示器一样
 }
 
 int main()
@@ -69,5 +69,5 @@ int main()
     s1.pop();
     std::cout << s1.top() << std::endl;
     std::cout << s1.empty() << std::endl;
-    s1.printOn(std::cout);                 //! --------- 003 [错误] 不知道如何调用重载的输出运算符, 不知该传什么东东给printOn
+    s1.printOn(std::cout);                 //! --------- 003 [错误] 不知该传什么东东给printOn
 }
