@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+template <typename T>
+void print_By_Value(T arg)
+{
+    cout << "\ntype : " << typeid(arg).name() << endl;
+}
+
+int main()
+{   
+    //! ------------------- 以 变量 的形式 塞入 字符串 1
+    const string s = "hi";
+    print_By_Value(s);    //! s 不退化
+
+    //! ------------------- 以 变量 的形式 塞入 字符串 2
+    const string cs = "hi";
+    print_By_Value(cs);    //! s 退化 so that arg has type std::string
+
+    //! ------------------- 以 字面量 的形式 塞入 字符串 3, 传生(raw)的数值和字符串要小心, 把它煮熟了放变量里会好很多
+    print_By_Value("hi"); //! 退化 to pointer so that arg has type char const*
+                          //! char const[3] 退化成 char const*  
+                          //! void printV (char const[3] arg) {...} 退化成 void printV (char const* arg) {...}
+}
+
