@@ -1,7 +1,7 @@
 {
     "configurations": [
         {
-            "name": "Win32-office",
+            "name": "Mac-Home-CPP",
             "includePath": [
                 "${workspaceFolder}/**"
             ],
@@ -10,9 +10,9 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "C:\\mingw-w64\\mingw32\\bin\\gcc.exe",
-            "intelliSenseMode": "windows-gcc-x86",
-            "cppStandard": "gnu++17",
+            "compilerPath": "/usr/local/bin/gcc-11",
+            "intelliSenseMode": "macos-clang-x86",
+            "cppStandard": "c++17",
             "cStandard": "c17"
         },
         {
