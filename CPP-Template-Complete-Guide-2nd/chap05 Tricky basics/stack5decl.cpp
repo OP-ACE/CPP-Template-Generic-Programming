@@ -47,10 +47,11 @@ template<typename T> //! ---- 001 [犯错] 丢了这行, 关于 T 的声明
 template<typename T2>
 Stack<T>& Stack<T>::operator=(Stack<T2> const& op2){ //! ---- [错误] 返回类型 Stack<T2>&
   Stack<T2> copy_of_op2(op2);
-  elems.clear();
+  
+  this->elems.clear();
   while (!copy_of_op2.empty())
   {
-    this->elems.push_front(copy_of_op2.top());
+    this->elems.push_front(copy_of_op2.top()); //!注意: 不能用 op2.elems, 因为是私有成员变量
     copy_of_op2.pop();
   }
   return *this;
