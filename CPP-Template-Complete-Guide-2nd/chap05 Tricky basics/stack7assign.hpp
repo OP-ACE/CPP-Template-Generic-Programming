@@ -1,3 +1,19 @@
+
+
+template<typenmae T, typename Cont = std::deque<T>>
+class Stack
+{
+
+}
+
+
+
+
+
+
+
+
+
 template<typename T, typename Cont>
  template<typename T2, typename Cont2>
 Stack<T,Cont>&
