@@ -2,8 +2,9 @@
 
 using namespace std;
 
+
 template <typename T>
-void print_By_Value(T arg)
+void print_By_Value(T arg) //! 形参 arg 变成任意实参的一份拷贝，不管实参是一个对象，一个常量还是一个函数的返回值。
 {
     cout << "\ntype : " << typeid(arg).name() << endl;
 }
