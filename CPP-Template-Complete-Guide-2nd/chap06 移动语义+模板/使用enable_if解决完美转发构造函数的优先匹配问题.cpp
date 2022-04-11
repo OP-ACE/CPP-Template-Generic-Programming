@@ -4,7 +4,8 @@
 
 template<typename T>                                                              //! std::enable_if_t< >
 using EnableIfString = std::enable_if_t< std::is_convertible_v<T, std::string> >; //! 内置类型萃取模板用法 std::is_convertible_v<FROM,TO>
-
+                                                                                  //! C++14以前 enable_if  <>::type  | is_convertible  <T, string>::value  ::value -> _v
+                                                                                  //! C++14以后 enable_if_t<>        | is_convertible_v<T, string>         ::type  -> _t
 //! ---- 001 [错误] 普通类的成员函数也可以是模板
 class Person //! Person是个普通类, 但其成员函数是个模板
 {
