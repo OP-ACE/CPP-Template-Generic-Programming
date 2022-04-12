@@ -23,5 +23,9 @@ int main()
     print_By_Value("hi"); //! 退化 to pointer so that arg has type char const*
                           //! char const[3] 退化成 char const*  
                           //! void printV (char const[3] arg) {...} 退化成 void printV (char const* arg) {...}
+    
+    //! ------------------- 原始(raw)数组的声明, 关键是用括号 [] 来表示数组, 而非文字 arr, 下面 i_am_array 是数组名
+    int i_am_array [4];
+    print_By_Value(i_am_array);
 }
 
