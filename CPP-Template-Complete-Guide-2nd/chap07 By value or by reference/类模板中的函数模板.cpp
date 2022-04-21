@@ -24,6 +24,7 @@ public:
     void bf(U&& u)
     {}
 };
+//!-------------------------------------- Meyers书 的 Item 24: Distinguish universal references from rvalue
 
 template<typename T>
 void rval_ref(std::vector<T>&& par1)       //! 例1: par1是右值引用
