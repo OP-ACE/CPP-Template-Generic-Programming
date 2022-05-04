@@ -26,7 +26,9 @@
                 "_UNICODE"
             ],
             "compilerPath": "C:\\mingw-w64\\mingw32\\bin\\gcc.exe",
-            "intelliSenseMode": "windows-gcc-x86"
+            "intelliSenseMode": "windows-gcc-x86",
+            "cppStandard": "c++20",
+            "cStandard": "c17"
         }
     ],
     "version": 4
