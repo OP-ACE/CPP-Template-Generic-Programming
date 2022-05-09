@@ -31,7 +31,7 @@ int main()
     //!--------------- 成员函数指针
     A a("hello world");
     void (A::*memP)()=&A::print; //! 定义 类A的 成员函数指针 memP 并 赋初值 &A::print
-    (a.*memP)();
+    (a.*memP)(); //! 不用星号, 即, (a.memP)() 也可以
 
     return 0;
 }
