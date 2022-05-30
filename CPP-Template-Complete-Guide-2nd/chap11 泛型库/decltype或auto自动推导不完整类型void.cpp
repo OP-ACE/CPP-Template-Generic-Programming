@@ -27,35 +27,46 @@ auto nothingMuch()
 
 
 //! 3. decltype和auto的组合, 总是可以推导 void类型, 无论前置或后置. always works
-decltype(auto) nothing()
+
+decltype(auto) void_func()
 {
-    return;
+  return;
 }
 
-template<typename Callable, typename... Args>
-decltype(auto) call(Callable&& op, Args&&... args)
-{ 
-  struct cleanup {
-  ~cleanup()
-  {
-    std::cout << "to fix decltype(auto) for void type" << "\n";
-  }
-  } dummy;
-  decltype(auto) ret{std::invoke(std::forward<Callable>(op),
-                                 std::forward<Args>(args)...)};
-  return ret;
+template <typename T>
+decltype(auto) void_tmpl_func(T arg)
+{
+  // struct DUMMY 
+  // {
+  //   ~DUMMY(){}
+  // } dummy_obj; //! 去掉则出错, 为什么?
+
+  return void_func();
 }
 
-int int_fun(int i)
-{
-    return i;
-}
 
 auto main() -> decltype(int {})
 {
-    nothing();
-    nothingMuch();
+    void_func();
+    void_tmpl_func(1);
     return 0;
-  //call(nothing,1);//error
-    call(int_fun,1);
 }
+
+// template <typename T>
+// decltype(auto) notingTmplFunc(T arg)
+// {
+//   std::cout << "notingTmplFunc called \n";
+
+//   // decltype(auto) temp_obj{nothing()}; // error: variable or field 'temp_obj' declared void
+//   // return temp_obj;
+// }
+
+// notingTmplFunc(1);
+
+
+// template <typename T>
+// decltype(auto) somethingTmplFunc(T arg)
+// {
+//   decltype(auto) temp_obj{nothing()}; // error: variable or field 'temp_obj' declared void
+//   return arg;
+// }
