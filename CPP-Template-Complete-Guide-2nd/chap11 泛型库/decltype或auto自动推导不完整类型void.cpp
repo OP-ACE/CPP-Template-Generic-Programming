@@ -2,7 +2,9 @@
 // don't work for a void return type 
 // because void is an incomplete type.
 // https://stackoverflow.com/questions/30315649/how-to-handle-void-decltype
-
+#include <iostream>
+#include <utility>
+#include <functional>
 
 //! 1.A  虽然 auto 可以用推导 前置的 void类型
 auto nothingMuch()
@@ -30,9 +32,30 @@ decltype(auto) nothing()
     return;
 }
 
+template<typename Callable, typename... Args>
+decltype(auto) call(Callable&& op, Args&&... args)
+{ 
+  struct cleanup {
+  ~cleanup()
+  {
+    std::cout << "to fix decltype(auto) for void type" << "\n";
+  }
+  } dummy;
+  decltype(auto) ret{std::invoke(std::forward<Callable>(op),
+                                 std::forward<Args>(args)...)};
+  return ret;
+}
+
+int int_fun(int i)
+{
+    return i;
+}
+
 auto main() -> decltype(int {})
 {
     nothing();
     nothingMuch();
     return 0;
+  //call(nothing,1);//error
+    call(int_fun,1);
 }

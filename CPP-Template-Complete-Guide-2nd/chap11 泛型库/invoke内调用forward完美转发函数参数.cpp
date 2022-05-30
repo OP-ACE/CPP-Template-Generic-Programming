@@ -16,11 +16,11 @@ decltype(auto) call(Callable&& op, Args&&... args)
   struct cleanup {
   ~cleanup()
   {
-    std::cout "to fix decltype(auto) for void type" << "\n";
+    std::cout << "to fix decltype(auto) for void type" << "\n";
   }
   } dummy;
   decltype(auto) ret{std::invoke(std::forward<Callable>(op),
-                     std::forward<Args>(args)...)};
+                                 std::forward<Args>(args)...)};
   return ret;
 }
 
@@ -47,34 +47,27 @@ decltype(auto) call(Callable&& op, Args&&... args)
 //! 为了支持返回引用（如std::ostream&）, 使用decltype(auto)替代auto 
 //! 此时, 可以通过 完美转发 可调用对象以及被传递的参数 来支持 移动语义.
 
-template<typename Iter, typename Callable, typename... Args>
-void foreach (Iter current, Iter end, Callable op, const Args&... args)
-{
-  while (current != end)
-  {
-    std::invoke(op, args..., *current);
-    ++current;
-  }
+
+std::string print_func(int i) {
+    std::cout << i << '\n';
+    return "call print_func";
 }
 
-
-class A {
- public:
-  void mem_func(int i) const
-  {
-    std::cout << i << '\n';
-  }
+struct NomalClass {
+    NomalClass(int num) : num_(num) {}
+    int   int_mem_print(int i)  { std::cout << num_+i << '\n'; return i;}
+    void void_mem_print(int i)  { std::cout << num_+i << '\n'; return;}
+    int num_;
 };
 
 int main()
 {
-  std::vector<int> primes = { 2, 3, 5, 7, 11, 13, 17, 19 };
-  foreach(primes.begin(), primes.end(), // 范围内的元素是lambda的第二个参数
-    [](std::string const& prefix, int i) {
-      std::cout << prefix << i << '\n';
-    },
-    "value: "); // lambda的第一个参数
+  NomalClass normal_class_obj(314159);
+
+  std::invoke(&NomalClass::int_mem_print , normal_class_obj, 1); //!
+  std::invoke(&NomalClass::void_mem_print, normal_class_obj, 1); //! 
   
-  A obj;
-  foreach(primes.begin(), primes.end(), &A::mem_func, obj);
+         call(&NomalClass::int_mem_print , normal_class_obj, 1);
+       //call(&NomalClass::void_mem_print, normal_class_obj, 1); //! error
+         call(print_func,1);
 }
