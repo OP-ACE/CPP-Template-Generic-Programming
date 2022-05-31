@@ -18,7 +18,10 @@
         {
             "name": "Win32-Office-CPP",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "C:/mingw-w64/mingw32/include/boost/**",
+                "C:/mingw-w64/mingw32/include/**",
+                "C:/boost_1_79_0/boost"
             ],
             "defines": [
                 "_DEBUG",
