@@ -39,7 +39,7 @@ struct remove_cv {
 
 
 int main(int argc, char *argv[])
-{
+{   //!   type_id_with_cvr<remove_cv 是个函数模板, 所以用法为  type_id_with_cvr<remove_cv<特化类型>()                           
     cout << "remove_cv<int> = " << type_id_with_cvr<remove_cv<int>::type >().pretty_name() << endl;
     cout << "remove_cv<const int> = " << type_id_with_cvr<remove_cv<int>::type >().pretty_name() << endl;
     cout << "remove_cv<int const> = " << type_id_with_cvr<remove_cv<int>::type >().pretty_name() << endl;

@@ -11,7 +11,8 @@ struct type_is {
 }; 
 
 template <class T> 
-using type_is_t = typename type_is<T>::type; 
+using type_is_t = typename type_is<T>::type; //! 用 函数模板<特化参数>::类型别名 来调用 函数模板的类型参数
+                                             //! 相当于 类模板名::模板数据成员
 
 //! -------------------------------------------- conditional
 template <bool, class T, class> 
@@ -25,6 +26,7 @@ int main()
 {
     using myInt = conditional<true, int, double>;
     myInt x;
+    cout << typeid(myInt::type).name() << endl;
     cout << type_id_with_cvr<myInt::type>().pretty_name() << endl;
 
 }
