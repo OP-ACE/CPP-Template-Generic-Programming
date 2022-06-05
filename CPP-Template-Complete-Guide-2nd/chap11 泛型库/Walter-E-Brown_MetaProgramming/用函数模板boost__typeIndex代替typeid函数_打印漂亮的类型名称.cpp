@@ -32,9 +32,9 @@ int main()
     cout << "typeid: " << typeid(const type_info &).name() << endl;
 
     const Foo *foo = new Foo();
-    cout << "foo: " << typeid(foo).name() << endl;
+    cout << "foo: "  << typeid(foo).name() << endl;
     cout << "*foo: " << typeid(*foo).name() << endl;
-    cout << "Foo: " << typeid(Foo).name() << endl;
+    cout << "Foo: "  << typeid(Foo).name() << endl;
 
     const int *p_1;
     PrintType_typeid(p_1);
