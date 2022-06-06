@@ -19,7 +19,7 @@
             "name": "Win32-Office-CPP",
             "includePath": [
                 "${workspaceFolder}/**",
-                "C:/mingw-w64/mingw32/i686-w64-mingw32/include/**",
+                "C:/mingw-w64/mingw32/i686-w64-mingw32/include/**"
                 // "C:/mingw-w64/mingw32/include/**",
                 // "C:/boost_1_79_0/boost"
             ],
